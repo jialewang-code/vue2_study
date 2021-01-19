@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>v-on</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- v-on Vue提供的事件绑定指令，可以简写成 @ -->
+			<!-- 事件监听时v-on且函数不用传参数时，函数名后面不用加() -->
+			<input type="button" value="提交" v-on:click="show" />
+			<input type="button" value="提交" @mouseover="log" />
+		</div>
+		<script src="../lib/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					msg: "abc",
+					msg2: "<h1>我是一个H1</h1>",
+					mytitle: "这是我的title"
+				},
+				//这个methods属性定义了Vue实例所有可用的方法
+				methods: {
+					show() {
+						alert("hello!");
+					},
+					log() {
+						console.log("hello world");
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

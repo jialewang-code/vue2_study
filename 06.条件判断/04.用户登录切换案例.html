@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- Vue的底层会复用代码，以提升性能，不想复用时可用key标识不复用 -->
+			<label for="userName" v-if="isShow"
+				>用户账号：
+				<input
+					type="text"
+					placeholder="请输入用户账号"
+					id="userName"
+					key="userName"
+				/>
+			</label>
+			<label for="email" v-else
+				>邮箱账号：
+				<input
+					type="text"
+					placeholder="请输入邮箱账号"
+					id="email"
+					key="email"
+				/>
+			</label>
+			<button @click="isShow=!isShow">切换账号</button>
+		</div>
+
+		<script src="../lib/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					isShow: true
+				},
+				methods: {}
+			});
+		</script>
+	</body>
+</html>

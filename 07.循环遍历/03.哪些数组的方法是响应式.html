@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul>
+				<!-- 添加key关键字，可以复用元素和组件,提升性能 -->
+				<li v-for="item in letters">{{item}}</li>
+			</ul>
+			<button @click="btnClick">点击</button>
+		</div>
+
+		<script src="../lib/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					letters: ["A", "B", "C", "D", "E"]
+				},
+				methods: {
+					btnClick() {
+						// this.letters.push("aaa", "bbb", "ccc");
+						// this.letters.pop();
+						// this.letters.shift();
+						// this.letters.unshift("aaa", "bbb", "ccc");
+						// this.letters.splice(2, 0, "aaa");
+						// this.letters.sort((a, b) => {
+						// 	return a - b;
+						// });
+						// this.letters.reverse();
+						// Vue.set(要修改的对象，索引值，修改后的值),Vue的内部方法
+						// Vue.set(this.letters, 2, "bbb");
+						// 直接修改下标索引,Vue不会监听，达不到响应式
+						this.letters[0] = "bbb";
+						console.log(this.letters);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

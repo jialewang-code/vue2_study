@@ -1,0 +1,21 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+table {
+	border-collapse: collapse;
+	border: solid 1px #ddd;
+}
+table thead {
+	background: #ecf0f1;
+}
+table th,
+td {
+	font-size: 14px;
+	padding: 1em;
+	text-align: center;
+}
+table td button {
+	padding: 0.3em 0.5em;
+	border-radius: 0.3em;
+}

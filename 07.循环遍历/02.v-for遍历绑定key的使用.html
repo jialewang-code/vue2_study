@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul>
+				<!-- 添加key关键字，可以复用元素和组件,提升性能 -->
+				<li v-for="item in letters" :key="item">{{item}}</li>
+			</ul>
+		</div>
+
+		<script src="../lib/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					letters: ["A", "B", "C", "D", "E"]
+				},
+				methods: {}
+			});
+		</script>
+	</body>
+</html>

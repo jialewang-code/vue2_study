@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>跑马灯效果</title>
+		<script src="../lib/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" value="浪起来" v-on:click="lang" />
+			<input type="button" value="不要浪" @click="clear" />
+			<h4>{{msg}}</h4>
+		</div>
+
+		<script>
+			//vm实例会监听自己身上data中所有数据的改变，只要数据一发生变化，就会自动把新的数
+			//据从data同步到页面上去
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					msg: "猥琐发育，别浪~~！",
+					setIntervalId: null
+				},
+				methods: {
+					lang() {
+						//setIntervalId不会重复定义
+						if (this.setIntervalId != null) return;
+						this.setIntervalId = setInterval(() => {
+							let start = this.msg.substring(0, 1);
+							let end = this.msg.substring(1);
+							this.msg = end + start;
+						}, 500);
+					},
+					clear() {
+						clearInterval(this.setIntervalId);
+						//清除了setIntervalId后，setIntervalId就不等于null,需要重新置为null
+						this.setIntervalId = null;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

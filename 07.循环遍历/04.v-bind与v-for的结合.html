@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.active {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul>
+				<li
+					v-for="(item,index) in movies"
+					@click="liClick(index)"
+					:class="{active:index===currentIndex}"
+				>
+					{{item}}
+				</li>
+			</ul>
+		</div>
+
+		<script src="../lib/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					// 要一个变量来记录状态
+					currentIndex: 0,
+					movies: ["海王", "幸福来敲门", "大话西游", "天上一日"]
+				},
+				methods: {
+					liClick(index) {
+						// console.log(index);
+						this.currentIndex = index;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

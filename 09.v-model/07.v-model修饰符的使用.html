@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- lazy懒修饰符，当input失去焦点或是按了enter后再绑定 -->
+			<input type="text" v-model.lazy="message" />
+			<h2>{{message}}</h2>
+
+			<!-- number类型修饰符，vue的数据类型默认是string类型，加了number修饰符后，数据才是number类型 -->
+			<input type="number" v-model.number="age" />
+			<h2>{{age}}-{{typeof age}}</h2>
+
+			<!-- trim去除空格修饰符， -->
+			<input type="text" v-model.trim="name" />
+			<h2>你的姓名是：{{name}}</h2>
+		</div>
+
+		<script src="../lib/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: { message: "hello", age: 18, name: "" },
+				methods: {}
+			});
+		</script>
+	</body>
+</html>

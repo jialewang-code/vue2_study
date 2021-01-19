@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>v-cloak</title>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 使用v-cloak属性能够解决插值表达式{{}}闪烁的问题 -->
+			<p v-cloak>+++{{msg}}---</p>
+			<!-- v-text属性没有闪烁问题，并且会替换原来的内容 -->
+			<h4 v-text="msg">======</h4>
+			<!-- v-html，数据内有html标签时使用，替换原来的内容 -->
+			<div v-html="msg2"></div>
+		</div>
+		<script src="../lib/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					msg: "abc",
+					msg2: "<h1>我是一个H1</h1>"
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<cpn></cpn>
+			<cpn></cpn>
+			<cpn></cpn>
+		</div>
+
+		<template id="cpn1">
+			<div>
+				<h2>{{title}}</h2>
+				<p>我是内容,果的人</p>
+			</div>
+		</template>
+
+		<script src="../lib/vue.js"></script>
+		<script>
+			Vue.component("cpn", {
+				template: "#cpn1",
+				// 组件内数据是一个函数，返回一个对象
+				data() {
+					return {
+						title: "aaa"
+					};
+				}
+			});
+			let vm = new Vue({
+				el: "#app",
+				data: { message: "hello", title: "我是标题" },
+				methods: {}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>事件修饰符</title>
+		<script src="../lib/vue.js"></script>
+		<style>
+			.inner {
+				background-color: green;
+				height: 150px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 事件修饰符
+        .stop 阻止冒泡事件
+        .prevent 阻止默认事件
+        .capture 修改默认冒泡为捕获行为
+        .self 只执行当前自己的动作，只阻止自己冒泡
+				.once 只执行一次
+			  .native 监听组件的原生事件，组件不能直接监听事件，需要添加native -->
+		<div id="app">
+			<div class="inner" @click="divHandler">
+				<!-- 使用.stop阻止冒泡行为 -->
+				<input type="button" value="戳他" @click.stop="btnHandler" />
+			</div>
+			<!-- 使用.prevent阻止默认行为 -->
+			<a href="http://www.baidu.com" @click.prevent="linkClick">百度</a>
+			<!-- 使用.capture修改默认冒泡行为为捕获行为 -->
+			<section class="inner" @click.capture="divHandler">
+				<input type="button" value="按钮" @click="btnHandler" />
+			</section>
+			<!-- .once只执行一次动作，.prevent .once修饰符前后没有关系 -->
+			<a href="http://www.baidu.com" @click.prevent.once="linkClick">百度</a>
+			<!-- 只有点击当前事件，.self修饰符元素才执行动作，不冒泡也不捕获 -->
+			<section class="inner" @click.self="divHandler">
+				<input type="button" value="按钮" @click="btnHandler" />
+			</section>
+		</div>
+
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {},
+				methods: {
+					divHandler() {
+						console.log("触发了parent");
+					},
+					btnHandler() {
+						console.log("触发了child");
+					},
+					linkClick() {
+						console.log("触发了默认的link行为");
+					},
+				},
+			});
+		</script>
+	</body>
+</html>

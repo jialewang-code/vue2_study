@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 当条件为false时，v-if指令修饰的元素，不会存在DOM元素中 -->
+			<h2 v-if="isShow">{{message}}</h2>
+			<!-- 当条件为false时，v-show指令修饰的元素，会隐藏display:none; -->
+
+			<h2 v-show="isShow">{{message}}</h2>
+		</div>
+
+		<script src="../lib/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					message: "hello",
+					isShow: true
+				},
+				methods: {}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="(item,index) in lesson">{{index+1}}.{{item}}</li>
+			</ul>
+			<br />
+			<ul>
+				<li v-for="item of info">{{item}}</li>
+			</ul>
+			<ul>
+				<li v-for="(value,key) of info">{{key}}:{{value}}</li>
+			</ul>
+		</div>
+
+		<script src="../lib/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el: "#app",
+				data: {
+					lesson: ["javascript", "css", "js", "php"],
+					info: {
+						name: "kobe",
+						age: 39,
+						job: "basketball",
+						weight: "90KG"
+					}
+				},
+				methods: {}
+			});
+		</script>
+	</body>
+</html>
